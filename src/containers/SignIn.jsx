@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../css/signin.css'
 import banner from '../img/back.jpg'
 import avatar from '../img/avatar.png'
-
+oe
 class SignIn extends Component{
 
     constructor(props){
