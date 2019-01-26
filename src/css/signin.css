@@ -1,0 +1,115 @@
+*,
+*::after,
+*::before{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.SignIn{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.content-form-signin{
+    background-size: cover;
+    background-position: right center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+body{
+	background: url(../img/back.jpg) no-repeat center;
+	background-size: cover;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+	min-height: 100vh;
+	position: relative;
+}
+
+.login{
+	background-color: rgba(0, 0, 0, 0.5);
+	position: absolute; 
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	height: 480px;
+	width: 320px;
+}
+
+.login ::placeholder{
+	/* color: #fff; */
+	color: rgba(255, 255, 255, 0.5);
+	opacity: 1;
+	font-size: 18px;
+}
+
+.login_avatar{
+	border: 4px solid rgba(0, 0, 0, 0.3);
+	border-radius: 50%;
+	position: absolute;
+	left: calc(50% - 50px);
+	top: -50px;
+	height: 100px;
+	width: 100px;
+	padding-top: .25rem;
+}
+
+.login_form{
+	margin-top: 100px;
+	padding: 0 2rem;
+}
+
+.login_block{
+	margin: 1rem auto;
+}
+
+.login_block label{
+	color: #fff;
+	text-transform: uppercase;
+}
+
+.login_block a{
+	color: #fff;
+	font-size: 1.5rem;
+	text-decoration: none;
+}
+
+.login_block a:hover{
+	color: #ff4907;
+}
+
+.login_block:last-child{
+	margin-top: 2rem;
+	text-align: center;
+}
+
+.login_input{
+	background: transparent;
+	border: none;
+	border-bottom: 1px solid #fff;
+	color: #fff;
+	font-size: 1.8rem;
+	margin: 0.5rem 0;
+	height: 30px;
+	width: 100%;
+	outline: none;
+}
+
+.login_btn{
+	background-color: #ff4907;
+	border: none;
+	border-radius: 0.25rem;
+	color: #fff;
+	font-size: 1.4rem;
+	cursor: pointer;
+	padding: 0.75rem 1.5rem;
+	transition: all 0.3s ease-in-out;
+}
+
+.login_btn:hover{
+	background-color: #912802;
+}
+/*#sourceMappingURL=styles.css.map */
