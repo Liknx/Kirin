@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
 import '../css/signin.css'
 import banner from '../img/back.jpg'
 import avatar from '../img/avatar.png'
@@ -44,4 +46,14 @@ class SignIn extends Component{
     }
 }
 
-export default SignIn
+const mapStateToProps = state => {
+    return {
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+    }    
+}
+
+export default connect(null, null)(SignIn)

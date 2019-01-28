@@ -1,5 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux'
+import { Router } from 'react-router'
+
+import routes from './routes'
+import history from './utils/history'
+import store from './utils/store'
+
 import SignIn from './containers/SignIn';
 
 ReactDOM.render(
@@ -7,6 +14,13 @@ ReactDOM.render(
         ,document.getElementById('root')
     );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
+ReactDOM.render(
+    <Provider store={store}>
+        <div>
+            <Router history={history}>
+                {routes} 
+            </Router>
+        </div>
+    </Provider>
+    ,window.root
+)
