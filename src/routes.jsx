@@ -3,8 +3,8 @@ import { Route, Switch } from 'react-router'
 
 import SignIn from './containers/SignIn'
 
-export default(
-    <Switch>
-        <Route exact path="/signin" component={SignIn}/>
-    </Switch>
+export default (
+	<Switch>
+		<Route exact path="/" component={ SignIn } />
+	</Switch>
 )
