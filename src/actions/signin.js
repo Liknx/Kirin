@@ -26,8 +26,7 @@ export function signIn(credentials, callback) {
             console.log('sin datos');
         }else{
             const axios = createAxiosInstance()
-            const data = 
-            // 'usuario=login&contrasena=segurança'
+            const data =
             {
                 Usuario: 'login',
                 Contrasena: 'segurança'
@@ -41,21 +40,9 @@ export function signIn(credentials, callback) {
                 } else {
                     console.log('Fail--->',res);
                 }
-                if (callback instanceof Function) {
-                    callback()
-                }
             })
             .catch((err) => {
                 console.log('err--->',err)
-                if (err.response && err.response.status === 401) {
-                    // dispatch({type: types.MOSTRAR_MENSAJE, payload: { type: 'danger', message: 'Nombre de usuario o contraseña incorrectas' }})
-                    // const fn5 = d => d({ type: types.PROCESAMIENTO_SIGNIN_PAGE, payload: false  })
-                } else {
-                    messageHandler(dispatch, err.response)
-                }
-                if (callback instanceof Function) {
-                    callback()
-                }
             })
         }
     }
