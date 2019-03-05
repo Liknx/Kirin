@@ -6,52 +6,50 @@ import * as types from './types'
 
 const cookie = new Cookies()
 
+export function getSignin() {
+    const axios = createAxiosInstance()
+	return (dispatch) => {
+		axios.get('http://localhost/Kirin_Back/controllers/signin')
+		.then((res) => {
+            console.log('res--->',res)
+        })
+		.catch((err) => {
+            console.log('err--->',err)
+        })
+    }
+}
+
 export function signIn(credentials, callback) {
-
     return function (dispatch) {
-        const fn0 = d => d({ type: types.PROCESAMIENTO_SIGNIN_PAGE, payload: true })
-        fn0(dispatch)
-
-        if(!credentials.username||!credentials.password){
-            dispatch({type: types.MOSTRAR_MENSAJE, payload: { type: 'warning', message: 'Datos sin Ingresar' }})
-            if (callback instanceof Function) {
-                callback()
-            }
+        // if(!credentials.username||!credentials.password){
+        if(1 != 1){
+            console.log('sin datos');
         }else{
             const axios = createAxiosInstance()
-            const data = 'usuario=login&contrasena=segurança'
-            // {
-            //     Usuario: credentials.username,
-            //     Contrasena: credentials.password
-            // }
+            const data = 
+            // 'usuario=login&contrasena=segurança'
+            {
+                Usuario: 'login',
+                Contrasena: 'segurança'
+            }
             console.log('data',data)
             axios
-            .post(`${API_URL}/signin`,data)
+            .post(`http://localhost/Kirin_Back/controllers/signin`,data)
             .then((res) => {
                 if (res.status !== false && res.rol !== 0) {
-                    console.log('Ok--->');
-                    // cookie.set('user', res.data.USUARIO, { path: '/' })
-                    cookie.set('token', res.novoToken, { path: '/' })
-                    // const usuario = res.data.USUARIO.Username
-                    const rol = res.rol
-                    // const cedula = res.data.CEDULA
-                    // dispatch({ type: types.INICIAR_SESION, payload: res.data.USUARIO})
-                    // dispatch({ type: types.INICIAR_SESION, payload: { usuario, rol, cedula }})
-                    window.location.href = `${CLIENT_ROOT_URL}`
+                    console.log('Ok--->',res);
                 } else {
-                    console.log('Fail--->');
-                    dispatch({type: types.MOSTRAR_MENSAJE, payload: { type: 'danger', message: 'Nombre de usuario o contraseña incorrectas' }})
-                    const fn5 = d => d({ type: types.PROCESAMIENTO_SIGNIN_PAGE, payload: false  })
+                    console.log('Fail--->',res);
                 }
                 if (callback instanceof Function) {
                     callback()
                 }
             })
             .catch((err) => {
-                // console.log('err--->',err)
+                console.log('err--->',err)
                 if (err.response && err.response.status === 401) {
-                    dispatch({type: types.MOSTRAR_MENSAJE, payload: { type: 'danger', message: 'Nombre de usuario o contraseña incorrectas' }})
-                    const fn5 = d => d({ type: types.PROCESAMIENTO_SIGNIN_PAGE, payload: false  })
+                    // dispatch({type: types.MOSTRAR_MENSAJE, payload: { type: 'danger', message: 'Nombre de usuario o contraseña incorrectas' }})
+                    // const fn5 = d => d({ type: types.PROCESAMIENTO_SIGNIN_PAGE, payload: false  })
                 } else {
                     messageHandler(dispatch, err.response)
                 }

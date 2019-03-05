@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import FontAwesome from 'react-fontawesome'
-import { signIn } from '../actions/signin'
+import { signIn, getSignin } from '../actions/signin'
 import { toast } from 'react-toastify'
 
 import '../css/signin.css'
@@ -38,6 +38,7 @@ class SignIn extends Component{
         this.setState({ signin: true })
         const data = { username: this.state.usuario, password: this.state.contrasena }
         this.props.signIn(data, () => { this.setState({ signin: false }) })
+        // this.props.getSignin()
     }
     
     render(){
@@ -103,6 +104,7 @@ const mapStateToProps = state => {
 function mapDispatchToProps(dispatch) {
     return {
        signIn: (credentials,callback) => dispatch(signIn(credentials,callback)),
+    //    getSignin: () => dispatch(getSignin()),
         // clearMessage: () => dispatch(clearMessage())
     }    
 }

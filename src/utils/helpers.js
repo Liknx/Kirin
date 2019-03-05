@@ -12,7 +12,11 @@ export function createAxiosInstance() {
     const token = '3d524a53c110e4c22463b10ed32cef9d'
     return axios.create({
         baseURL: API_URL,
-        headers: { 'Authorization': '3d524a53c110e4c22463b10ed32cef9d'}
-        // headers: { 'Authorization': `Bearer ${token}` }
+        headers: { 
+            "Authorization": "3d524a53c110e4c22463b10ed32cef9d",
+            "Content-Type": "application/json",
+            'Access-Control-Allow-Origin': '*',
+        },
+        // headers: { "Content-Type": "application/json" }
     })
 }
