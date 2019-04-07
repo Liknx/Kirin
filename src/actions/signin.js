@@ -21,7 +21,7 @@ export function getSignin() {
 
 export function signIn(credentials, callback) {
     return function (dispatch) {
-        // if(!credentials.username||!credentials.password){
+        //if(!credentials.username||!credentials.password){
         if(1 != 1){
             console.log('sin datos');
         }else{
