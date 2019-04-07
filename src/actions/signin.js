@@ -33,7 +33,7 @@ export function signIn(credentials, callback) {
             }
             console.log('data',data)
             axios
-            .post(`http://localhost/Kirin_Back/controllers/signin`,data)
+            .post(`http://localhost/Kirin_Back/controllers/index`,data)
             .then((res) => {
                 if (res.status !== false && res.rol !== 0) {
                     console.log('Ok--->',res);
