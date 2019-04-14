@@ -7,16 +7,16 @@ export function isPrimitive(test) {
     return (test !== Object(test))
 }
 
+const cookie = new Cookies()
+
 export function createAxiosInstance() {
-    // const token = cookie.get('token')
-    const token = '3d524a53c110e4c22463b10ed32cef9d'
+    const token = cookie.get('token')
     return axios.create({
         baseURL: API_URL,
         headers: { 
-            "Authorization": "3d524a53c110e4c22463b10ed32cef9d",
+            "Authorization": token,
             "Content-Type": "application/json",
             'Access-Control-Allow-Origin': '*',
         },
-        // headers: { "Content-Type": "application/json" }
     })
 }

@@ -6,37 +6,29 @@ import * as types from './types'
 
 const cookie = new Cookies()
 
-export function getSignin() {
-    const axios = createAxiosInstance()
-	return (dispatch) => {
-		axios.get('http://localhost/Kirin_Back/controllers/signin')
-		.then((res) => {
-            console.log('res--->',res)
-        })
-		.catch((err) => {
-            console.log('err--->',err)
-        })
-    }
-}
-
 export function signIn(credentials, callback) {
     return function (dispatch) {
-        // if(!credentials.username||!credentials.password){
-        if(1 != 1){
+        if(!credentials.username||!credentials.password){   
             console.log('sin datos');
         }else{
             const axios = createAxiosInstance()
             const data =
             {
-                Usuario: 'login',
-                Contrasena: 'segurança'
+                Usuario: credentials.username,
+                Contrasena: credentials.password,
             }
-            console.log('data',data)
             axios
-            .post(`http://localhost/Kirin_Back/controllers/signin`,data)
+            .post(`${API_URL}/controllers/index.php`,data)
             .then((res) => {
-                if (res.status !== false && res.rol !== 0) {
-                    console.log('Ok--->',res);
+                if (res.data.status && res.data.cedula !== "") {
+                    cookie.set('user', credentials.username, { path: '/' })
+                    cookie.set('token', res.data.novoToken, { path: '/' })
+                    const usuario = credentials.username
+                    const rol = res.data.Rol
+                    const cedula = res.data.cedula
+                    // dispatch({ type: types.INICIAR_SESION, payload: res.data.USUARIO})
+                    // dispatch({ type: types.INICIAR_SESION, payload: { usuario, rol, cedula }})
+                    window.location.href = `${CLIENT_ROOT_URL}`
                 } else {
                     console.log('Fail--->',res);
                 }

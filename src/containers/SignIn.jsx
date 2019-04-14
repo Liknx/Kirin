@@ -33,12 +33,15 @@ class SignIn extends Component{
     //     this.props.clearMessage()
     // }
 
+    // componentDidMount() {
+    //     this.props.getSignin()
+    //   }
+
     onSignIn = (e) => {
         e.preventDefault()
         this.setState({ signin: true })
         const data = { username: this.state.usuario, password: this.state.contrasena }
         this.props.signIn(data, () => { this.setState({ signin: false }) })
-        // this.props.getSignin()
     }
     
     render(){
@@ -104,7 +107,6 @@ const mapStateToProps = state => {
 function mapDispatchToProps(dispatch) {
     return {
        signIn: (credentials,callback) => dispatch(signIn(credentials,callback)),
-    //    getSignin: () => dispatch(getSignin()),
         // clearMessage: () => dispatch(clearMessage())
     }    
 }
