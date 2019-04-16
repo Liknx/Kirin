@@ -13,13 +13,14 @@ class Dashboard extends Component{
 
         return(
             <div>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem reprehenderit voluptatibus ipsa, dolorem odit, incidunt eius odio sequi totam cum illo veniam quam inventore facere perferendis accusamus illum corrupti excepturi.</p>
+                <h1>Dashboard</h1>
             </div>
         );
     }
 }
 
 const mapStateToProps = state => {
+    console.log('state',state)
     return {
     }
 }

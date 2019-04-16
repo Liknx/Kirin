@@ -10,6 +10,7 @@ export function signIn(credentials, callback) {
     return function (dispatch) {
         if(!credentials.username||!credentials.password){   
             console.log('sin datos');
+            dispatch({type: types.MOSTRAR_MENSAJE, payload: { type: 'warning', message: 'Datos sin Ingresar' }})
         }else{
             const axios = createAxiosInstance()
             const data =
@@ -21,13 +22,13 @@ export function signIn(credentials, callback) {
             .post(`${API_URL}/controllers/index.php`,data)
             .then((res) => {
                 if (res.data.status && res.data.cedula !== "") {
+                    console.log('res--->',res.data)
                     cookie.set('user', credentials.username, { path: '/' })
                     cookie.set('token', res.data.novoToken, { path: '/' })
                     const usuario = credentials.username
-                    const rol = res.data.Rol
+                    const rol = res.data.rol
                     const cedula = res.data.cedula
-                    // dispatch({ type: types.INICIAR_SESION, payload: res.data.USUARIO})
-                    // dispatch({ type: types.INICIAR_SESION, payload: { usuario, rol, cedula }})
+                    dispatch({ type: types.INICIAR_SESION, payload: { usuario, rol, cedula }})
                     window.location.href = `${CLIENT_ROOT_URL}`
                 } else {
                     console.log('Fail--->',res);

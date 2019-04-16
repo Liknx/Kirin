@@ -20,10 +20,10 @@ export default function (state = INITIAL_STATE, action) {
     switch (action.type) {
         case types.INICIAR_SESION:
             state = state.set('isAuthenticated', true)
-            state = state.setIn(['user','Username'], Immutable.fromJS(action.payload.Username))
-            state = state.setIn(['user','Role'], Immutable.fromJS(action.payload.Role))
-            state = state.setIn(['user','Cedula'], Immutable.fromJS(action.payload.Cedula))
-            // console.log('user---*>',state.get('user'))
+            state = state.setIn(['user','Username'], Immutable.fromJS(action.payload.usuario))
+            state = state.setIn(['user','Cedula'], Immutable.fromJS(action.payload.cedula))
+            state = state.setIn(['user','Role'], Immutable.fromJS(action.payload.rol))
+            console.log('user---*>',state.get('user').toJS())
             return state
         case types.CERRAR_SESION:
             state = state.set('isAuthenticated', false)

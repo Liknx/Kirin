@@ -100,7 +100,7 @@ class SignIn extends Component{
 
 const mapStateToProps = state => {
     return {
-        // messages: state.messages.get('message'),
+        messages: state.messages.get('message'),
     }
 }
 
