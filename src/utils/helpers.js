@@ -17,6 +17,6 @@ export function createAxiosInstance() {
             "Authorization": token,
             "Content-Type": "application/json",
             'Access-Control-Allow-Origin': '*',
-        },
+        }
     })
 }
