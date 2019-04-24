@@ -17,7 +17,7 @@ import { INICIAR_SESION } from './actions/types'
 // import './css/main.css'
 // import './css/font-awesome.css'
 // import './css/animate.css'
-// import 'react-toastify/dist/ReactToastify.min.css'
+import 'react-toastify/dist/ReactToastify.min.css'
 
 const cookie = new Cookies()
 

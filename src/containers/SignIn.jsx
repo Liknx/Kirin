@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import FontAwesome from 'react-fontawesome'
 import { signIn, getSignin } from '../actions/signin'
+import Cookies from 'universal-cookie'
+import { clearMessage } from '../actions/index'
 import { toast } from 'react-toastify'
 
 import '../css/signin.css'
@@ -35,7 +37,7 @@ class SignIn extends Component{
 
     // componentDidMount() {
     //     this.props.getSignin()
-    //   }
+    // }
 
     onSignIn = (e) => {
         e.preventDefault()
@@ -45,8 +47,9 @@ class SignIn extends Component{
     }
     
     render(){
+        const { messages } = this.props
 
-        if (this.props.messages) {
+        if (messages) {
             const { messages } = this.props
             switch (messages.type) {
                 case 'danger':
@@ -99,6 +102,7 @@ class SignIn extends Component{
 }
 
 const mapStateToProps = state => {
+    console.log('state--->',state.signin.get('user').toJS())
     return {
         messages: state.messages.get('message'),
     }
@@ -106,11 +110,9 @@ const mapStateToProps = state => {
 
 function mapDispatchToProps(dispatch) {
     return {
-       signIn: (credentials,callback) => dispatch(signIn(credentials,callback)),
-        // clearMessage: () => dispatch(clearMessage())
+        signIn: (credentials,callback) => dispatch(signIn(credentials,callback)),
+        clearMessage: () => dispatch(clearMessage())
     }    
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignIn)
-
-// export default SignIn;

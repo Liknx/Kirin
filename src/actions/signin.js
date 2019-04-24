@@ -10,7 +10,10 @@ export function signIn(credentials, callback) {
     return function (dispatch) {
         if(!credentials.username||!credentials.password){   
             console.log('sin datos');
-            dispatch({type: types.MOSTRAR_MENSAJE, payload: { type: 'warning', message: 'Datos sin Ingresar' }})
+            dispatch({type: types.MOSTRAR_MENSAJE, payload: { type: 'warning', message: 'Datos Sin Ingresar' }})
+            if (callback instanceof Function) {
+                callback()
+            }
         }else{
             const axios = createAxiosInstance()
             const data =
@@ -21,8 +24,7 @@ export function signIn(credentials, callback) {
             axios
             .post(`${API_URL}/controllers/index.php`,data)
             .then((res) => {
-                if (res.data.status && res.data.cedula !== "") {
-                    console.log('res--->',res.data)
+                if (res.data.status && res.data.cedula !== ""){
                     cookie.set('user', credentials.username, { path: '/' })
                     cookie.set('token', res.data.novoToken, { path: '/' })
                     const usuario = credentials.username
@@ -30,22 +32,38 @@ export function signIn(credentials, callback) {
                     const cedula = res.data.cedula
                     dispatch({ type: types.INICIAR_SESION, payload: { usuario, rol, cedula }})
                     window.location.href = `${CLIENT_ROOT_URL}`
-                } else {
-                    console.log('Fail--->',res);
+                }else{
+                    dispatch({type: types.MOSTRAR_MENSAJE, payload: { type: 'danger', message: 'Usuario o Contraseña Incorrectas' }})
+                    const fn5 = d => d({ type: types.PROCESAMIENTO_SIGNIN_PAGE, payload: false  })
+                    if (callback instanceof Function) {
+                        callback()
+                    }
                 }
             })
             .catch((err) => {
                 console.log('err--->',err)
+                if (err.response && err.response.status === 401) {
+                    dispatch({type: types.MOSTRAR_MENSAJE, payload: { type: 'danger', message: 'Nombre de usuario o contraseña incorrectas' }})
+                    const fn5 = d => d({ type: types.PROCESAMIENTO_SIGNIN_PAGE, payload: false  })
+                    if (callback instanceof Function) {
+                        callback()
+                    }
+                } else {
+                    messageHandler(dispatch, err.response)
+                }
+                if (callback instanceof Function) {
+                    callback()
+                }
             })
         }
     }
 }
 
-// export function updateInputs(path, value) {
-//     return (dispatch) => {
-//         dispatch({ type: types.MODIFICAR_INPUTS_INICIO_SESION, payload: { path, value } })
-//     }
-// }
+export function updateInputs(path, value) {
+    return (dispatch) => {
+        dispatch({ type: types.MODIFICAR_INPUTS_INICIO_SESION, payload: { path, value } })
+    }
+}
 
 export function signOut() {
     return function (dispatch) {

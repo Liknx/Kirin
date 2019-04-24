@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { signOut } from '../actions/auth'
+import { signOut } from '../actions/signin'
 import { modulos } from './constants'
 
 export default function (ComposedComponent) {

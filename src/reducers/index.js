@@ -1,9 +1,13 @@
 import { combineReducers } from 'redux'
 
 import signinReducer from './signin'
+import messageHandling from './messageHandling'
+import dashboardReducer from './dashboard'
 
 const appReducer = combineReducers({
     signin: signinReducer,
+    messages: messageHandling,
+    dashboard: dashboardReducer,
 })
 
 const rootReducer = (state, action) => {

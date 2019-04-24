@@ -5,6 +5,12 @@ import { createAxiosInstance } from '../utils/helpers'
 export const API_URL = window.API_URL
 export const CLIENT_ROOT_URL = window.CLIENT_ROOT_URL
 
+export function clearMessage() {
+    return (dispatch) => {
+        dispatch({ type: types.LIMPIAR_MENSAJES })
+    }
+}
+
 export function messageHandler(dispatch, error) {
     let theMessage = { type: 'warning', message: '' }
  
@@ -95,3 +101,4 @@ function getInnerException(obj) {
         return toReturn
     }
 }
+
