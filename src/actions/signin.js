@@ -24,13 +24,13 @@ export function signIn(credentials, callback) {
             axios
             .post(`${API_URL}/controllers/index.php`,data)
             .then((res) => {
-                if (res.data.status && res.data.cedula !== ""){
-                    cookie.set('user', credentials.username, { path: '/' })
+                if (res.data.status && res.data.usuario.cedula !== ""){
+                    cookie.set('user', res.data.usuario, { path: '/' })
                     cookie.set('token', res.data.novoToken, { path: '/' })
                     const usuario = credentials.username
-                    const rol = res.data.rol
-                    const cedula = res.data.cedula
-                    dispatch({ type: types.INICIAR_SESION, payload: { usuario, rol, cedula }})
+                    const rol = res.data.usuario.rol
+                    const cedula = res.data.usuario.cedula
+                    dispatch({ type: types.INICIAR_SESION, payload: res.data.usuario })
                     window.location.href = `${CLIENT_ROOT_URL}`
                 }else{
                     dispatch({type: types.MOSTRAR_MENSAJE, payload: { type: 'danger', message: 'Usuario o Contraseña Incorrectas' }})

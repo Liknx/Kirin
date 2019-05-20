@@ -27,11 +27,11 @@ class Dashboard extends Component{
 }
 
 function mapStateToProps(state) {
-    // console.log('state--->',state.signin.get('isAuthenticated'))
+    // console.log('state--->',state.signin)
     return {
         messages: state.messages.get('message'),
         isAuthenticated: state.signin.get('isAuthenticated'),
-        user: state.signin.get('user').toJS(),
+        user: state.signin.get('user'),
     }
 }
 
