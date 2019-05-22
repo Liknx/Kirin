@@ -15,11 +15,8 @@ const INITIAL_STATE = Immutable.fromJS({
 })
 
 export default function (state = INITIAL_STATE, action) {
-    
-    // console.log('state--->',state);
     switch (action.type) {
         case types.INICIAR_SESION:
-            console.log('action--->',action.payload);
             state = state.set('isAuthenticated', true)
             state = state.setIn(['user','Username'], Immutable.fromJS(action.payload.nombre))
             state = state.setIn(['user','Cedula'], Immutable.fromJS(action.payload.cedula))

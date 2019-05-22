@@ -9,9 +9,9 @@ import Dashboard from './containers/Dashboard'
 
 export default (
 	<Switch>
-		<Route exact path="/signin" component={ SignIn } />
-		{/* <Layout> */}
+		<Route exact path="/signIn" component={ SignIn } />
+		<Layout>
 			<Route exact path="/" component={ Dashboard } />
-		{/* </Layout> */}
+		</Layout>
 	</Switch>
 )
