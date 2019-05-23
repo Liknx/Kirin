@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { signOut } from '../actions/signin'
 import { clearMessage } from '../actions/index'
 
+import '../css/dashboard.css'
+
 class Dashboard extends Component{
 
     constructor(props){
