@@ -67,7 +67,7 @@
   } */
 
   .page-Navbar {
-    background-color: #3C3C3C;
+    background-color: #242424;
     height: 30px;
     width: 100%;
     left: 20%;
@@ -75,13 +75,14 @@
   }
 
   .page-Sidebar {
-    background-color: #3C3C3C;
-    height: 665px;
+    background-color: #242424;
+    height: 100%;
+    position: absolute;
     width: 20%;
   }
 
   .page-footer {
-    background-color: #3C3C3C;
+    background-color: #242424;
     height: 25px;
     width: 100%;
     position: fixed;

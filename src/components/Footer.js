@@ -10,8 +10,7 @@ class Footer extends Component {
             <div className="page-footer" >
                 <div className="footer-copyright">
                     <span className="copyright-symbol">
-                        © 
-                    </span> 2019 Liknx Developers
+                    </span> © Copyright 2019 | Realizado	por: Liknx Developers
                 </div>
                 <div className="footer-buttons">
                     <a href="#">

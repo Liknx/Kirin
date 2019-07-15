@@ -5,10 +5,8 @@ import '../css/beyond.css'
 
 class Navbar extends Component {
 	render() {
-
 		return (
-            <div className="page-Navbar">
-            </div>
+            <div className="page-Navbar"></div>
 		)
 	}
 }
